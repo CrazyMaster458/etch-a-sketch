@@ -1,13 +1,35 @@
 let container = document.querySelector(".container");
 
-for (let i = 0; i < 16; i++) {
-    let curretRow = createRowContainer();
+let gridSize = 16;
 
-    for (let y = 0; y < 16; y++) {
-        createSquare(curretRow);
+generateSquares();
+
+function generateSquares() {
+    container.innerHTML = "";
+
+    for (let i = 0; i < gridSize; i++) {
+        let curretRow = createRowContainer();
+    
+        for (let y = 0; y < gridSize; y++) {
+            createSquare(curretRow);
+        }
     }
 }
 
+function getUserInput() {
+    let userInput = prompt("Enter grid size (max: 100)")
+
+    gridSize = parseInt(userInput);
+
+    if (gridSize < 0 || gridSize > 100) {
+        gridSize = 16;
+        alert("Wrong grid size.");
+    } else if(userInput === null) {
+        alert("No input provided.");
+    } else {
+        generateSquares();
+    }
+}
 
 function createRowContainer() {
     let rowContainer = document.createElement("div");
