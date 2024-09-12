@@ -24,5 +24,9 @@ function createSquare(parent) {
 
     square.className = "square";
 
+    square.addEventListener("mouseover", function() {
+        square.classList.add("red");
+    })
+
     parent.appendChild(square);
 }
